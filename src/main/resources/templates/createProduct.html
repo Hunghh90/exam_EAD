@@ -1,10 +1,33 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Create Product</title>
 </head>
 <body>
-$END$
+<div class="container">
+    <h2>Create Product</h2>
+    <form th:action="@{/product/create}" th:object="${product}" method="post">
+        <div class="form-group">
+            <label for="prodName">Product Name:</label>
+            <input type="text" class="form-control" id="ProdName" th:field="*{ProdName}">
+        </div>
+        <div class="form-group">
+            <label for="description">Description:</label>
+            <input type="text" class="form-control" id="Description" th:field="*{Description}">
+        </div>
+        <div class="form-group">
+            <label for="dateOfManf">Date of Manufacture:</label>
+            <input type="date" class="form-control" id="DateOfManf" th:field="*{DateOfManf}">
+        </div>
+        <div class="form-group">
+            <label for="price">Price:</label>
+            <input type="text" class="form-control" id="Price" th:field="*{Price}">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
 </body>
 </html>

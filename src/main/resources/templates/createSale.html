@@ -1,10 +1,35 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
-  <title>$Title$</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <title>Create Sale</title>
 </head>
 <body>
-$END$
+<div class="container">
+  <h2>Create Sale</h2>
+  <form th:action="@{/sale/create}" th:object="${sale}" method="post">
+    <div class="form-group">
+      <label for="SalesmanID">Salesman ID:</label>
+      <input type="text" class="form-control" id="SalesmanID" th:field="*{SalesmanID}">
+    </div>
+    <div class="form-group">
+        <label for="product">Product:</label>
+        <select class="form-control" id="product" th:field="*{product}">
+            <option th:each="product : ${productList}" th:value="${product}" th:text="${product.ProdName}"><th:text="${product.ProdName}"></option>
+        </select>
+    </div>
+    <div class="form-group">
+      <label for="SalesmanName">Salesman Name:</label>
+      <input type="text" class="form-control" id="SalesmanName" th:field="*{SalesmanName}">
+    </div>
+    <div class="form-group">
+      <label for="DOS">Date of Sale:</label>
+      <input type="date" class="form-control" id="DOS" th:field="*{DOS}">
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>
 </body>
 </html>
